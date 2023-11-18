@@ -38,4 +38,4 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
             docker stop my-container || true
             docker rm my-container || true
-            docker run -d --name my-container ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
+            docker run -p 8080:8080 -d --name my-container ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
