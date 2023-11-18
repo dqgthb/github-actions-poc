@@ -2,7 +2,9 @@ name: Build and Deploy
 
 on:
   push:
+    main
   pull_request:
+    main
   workflow_dispatch:
 
 jobs:
@@ -36,6 +38,6 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
-            docker stop my-container || true
+            docker stop actions-poc-container || true
             docker rm my-container || true
-            docker run -p 8080:8080 -d --name my-container ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
+            docker run -p 8080:8080 -d --name actions-poc-container ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
