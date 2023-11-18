@@ -42,5 +42,5 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
             docker stop actions-poc-container || true
-            docker rm my-container || true
+            docker rm actions-poc-container || true
             docker run -p 8080:8080 -d --name actions-poc-container ${{ secrets.DOCKERHUB_USERNAME }}/actions-poc:latest
